@@ -1,0 +1,203 @@
+/* assets/css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-app: #09090b;       /* Very Dark Zinc */
+    --bg-panel: #18181b;     /* Dark Zinc */
+    --bg-glass: rgba(24, 24, 27, 0.7);
+    --border: #27272a;       /* Border Color */
+    --primary: #fafafa;      /* White Text */
+    --secondary: #a1a1aa;    /* Gray Text */
+    --accent: #3b82f6;       /* Blue "AI" Glow */
+    --accent-glow: rgba(59, 130, 246, 0.5);
+    --gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --radius: 16px;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-app);
+    color: var(--primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(circle at 50% 0%, #1e1e24 0%, transparent 70%);
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+    letter-spacing: -0.03em;
+    font-weight: 600;
+}
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+p { color: var(--secondary); }
+
+/* --- Layout --- */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+}
+
+/* --- Header / Nav --- */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    background: rgba(9, 9, 11, 0.6);
+    border-bottom: 1px solid var(--border);
+}
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    background: var(--gradient);
+    
+    /* Tambahkan properti standar ini di atas properti -webkit- */
+    background-clip: text;
+    
+    /* Properti vendor prefix */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Fallback color (opsional, untuk browser yang tidak support clip text) */
+    color: transparent; 
+}
+nav { display: flex; gap: 2rem; font-size: 0.9rem; }
+nav a { color: var(--secondary); font-weight: 500; }
+nav a:hover, nav a.active { color: var(--primary); }
+
+/* --- Components: Card --- */
+.glass-panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    /* Efek Glow halus di belakang card */
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 20px 40px -20px rgba(0,0,0,0.5);
+}
+
+.centered-panel {
+    max-width: 450px;
+    margin: 4rem auto;
+}
+
+/* --- Components: Buttons --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    color: black;
+    padding: 0.75rem 1.5rem;
+    border-radius: 99px; /* Pill shape */
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    border: none;
+    cursor: pointer;
+}
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--border);
+}
+.btn-outline:hover {
+    border-color: var(--secondary);
+    background: rgba(255,255,255,0.05);
+}
+.btn-gradient {
+    background: var(--gradient);
+    color: white;
+}
+
+/* --- Forms --- */
+.form-group { margin-bottom: 1.5rem; }
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--secondary);
+    font-weight: 500;
+}
+input, select {
+    width: 100%;
+    background: #000;
+    border: 1px solid var(--border);
+    color: white;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* --- Tables & Status --- */
+.table-wrapper {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+table { width: 100%; border-collapse: collapse; }
+th, td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+th {
+    background: rgba(255,255,255,0.02);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--secondary);
+}
+tr:last-child td { border-bottom: none; }
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.status-waiting { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
+.status-done { background: rgba(16, 185, 129, 0.1); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
+.status-process { background: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.2); }
+
+/* --- Footer --- */
+footer {
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    color: #52525b;
+    font-size: 0.85rem;
+}
