@@ -1,10 +1,10 @@
 <?php
 // includes/db.php
 // ubah credential sesuai environment
-define('DB_HOST','sql309.infinityfree.com');
-define('DB_NAME','if0_40686652_pitstop');
-define('DB_USER','if0_40686652');
-define('DB_PASS','Kelompok3Anjay');
+define('DB_HOST','DB_HOST');
+define('DB_NAME','DB_NAME');
+define('DB_USER','DB_USER');
+define('DB_PASS','DB_PASS');
 
 $options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
